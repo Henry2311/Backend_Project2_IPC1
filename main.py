@@ -280,15 +280,11 @@ def AgregarPaciente():
     telefono = request.json['Teléfono']
     genero = request.json['Género']
 
-    for paciente in Pacientes:
-        if paciente.getUser()==user:
-            mensaje={'Mensaje':'El usuario ya existe'}
-            break
-        else:
-            nuevo = Paciente(nombre,apellido,user,contraseña,fecha,telefono,genero,compra)
-            Pacientes.append(nuevo)
-            mensaje={'Mensaje':'Se añadió el usuario'}
-            break
+
+    nuevo = Paciente(nombre,apellido,user,contraseña,fecha,telefono,genero,compra)  
+    Pacientes.append(nuevo)
+    mensaje={'Mensaje':'Se añadió el usuario'}
+            
 
     
     return jsonify(mensaje)
